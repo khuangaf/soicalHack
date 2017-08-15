@@ -1,0 +1,43 @@
+  <!DOCTYPE html>
+<html>
+<head>
+<meta name ="viewport"content ="width=device-width,initial-scale=1.0">
+<title>基金會推薦系統</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<select id="organizationList">
+
+</select>
+<button onclick="calculateFinalScore()">GO!<button>
+<script>
+	var socket = io();
+	
+	// console.log(jQuery.getJSON('all_organizations.json'));
+	$.getJSON("static/all_organizations.json", function(json) {
+    	var newList = json; // this will show the info it in firebug console
+    	console.log(json)
+    	/* Remove all options from the select list */
+		$('#organizationList').empty();
+		$.each(newList, function(key, value) {   
+			// console.log(value)
+			// console.log(key)
+		     $('#organizationList')
+		          .append($('<option>', { value : key })
+		          .text(value)); 
+		});
+	});
+	socket.on('connect', function() {
+        console.log('connect!!');
+    });
+    socket.on('returnScore',function(data){
+    	console.log(data)
+    });
+    function calculateFinalScore(){
+    	var e = document.getElementById("organizationList");
+		var org = e.options[e.selectedIndex].text;
+    	console.log(org)
+		socket.emit('calculateFinalScore', org)
+	};
+
+</script>
