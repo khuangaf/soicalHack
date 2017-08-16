@@ -6,38 +6,23 @@
 </head>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
 <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-<select id="organizationList">
+<link rel="stylesheet" href="static/css/main.css">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-</select>
-<button onclick="calculateFinalScore()">GO!<button>
-<script>
-	var socket = io();
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<div class="user_input">
+<select id="organizationList" class="selectpicker">
 	
-	// console.log(jQuery.getJSON('all_organizations.json'));
-	$.getJSON("static/all_organizations.json", function(json) {
-    	var newList = json; // this will show the info it in firebug console
-    	console.log(json)
-    	/* Remove all options from the select list */
-		$('#organizationList').empty();
-		$.each(newList, function(key, value) {   
-			// console.log(value)
-			// console.log(key)
-		     $('#organizationList')
-		          .append($('<option>', { value : key })
-		          .text(value)); 
-		});
-	});
-	socket.on('connect', function() {
-        console.log('connect!!');
-    });
-    socket.on('returnScore',function(data){
-    	console.log(data)
-    });
-    function calculateFinalScore(){
-    	var e = document.getElementById("organizationList");
-		var org = e.options[e.selectedIndex].text;
-    	console.log(org)
-		socket.emit('calculateFinalScore', org)
-	};
+</select>
 
-</script>
+<button onclick="calculateFinalScore()" type="button" class="btn btn-primary">GO!</button>
+</div>
+<table id="table">
+</table>
+<script src= 'static/js/main.js'></script>
