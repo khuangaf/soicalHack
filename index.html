@@ -1,0 +1,19 @@
+  <!DOCTYPE html>
+<html>
+<head>
+<meta name ="viewport"content ="width=device-width,initial-scale=1.0">
+<title>基金會推薦系統</title>
+</head>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.js"></script>
+ <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+<select id="name">
+  <option value="volvo">Volvo</option>
+  <option value="saab">Saab</option>
+  <option value="opel">Opel</option>
+  <option value="audi">Audi</option>
+</select>
+<button onclick="calculateFinalScore()">click!<button>
+<script>
+	var socket = io();
+	console.log(jQuery.getJSON('all_organizations.json'))
+</script>
