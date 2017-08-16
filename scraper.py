@@ -17,7 +17,7 @@ all_organizations = list(set(list(set(invest_df.loc[:,'受助单位名称'].uniq
 # Set the startingpoint for the spider and initialize 
 
 url = "http://www.baidu.com/s?wd=公益基金會&rsv_spt=1&rsv_iqid=0xadfaa58e00000586&issp=1&f=8&rsv_bp=1&rsv_idx=2&ie=utf-8&rqlang=cn&tn=baiduhome_pg&rsv_enter=0&oq=%25E5%2585%25AC%25E7%259B%258A%25E5%259F%25BA%25E9%2587%2591%25E6%259C%2583&rsv_t=d4ba%2FY7RvuB5V74XU7eCxUg%2B%2BcpQule%2Bvn%2BuOMu6ba2WA5UoEnXS7Yot0klYxZq0ZhUO&rsv_pq=ff9a12f90000ebf3"
-LIMIT = 1000
+LIMIT = 100000
 # create lists for the urls in que and visited urls
 urls = [url]
 visited = [url]
@@ -45,4 +45,4 @@ while len(urls)>0 and len(visited) < LIMIT:
             urls.append(newurl)
 #     print urls
 #     url.
-pd.DataFrame(organization_dict.items()).to_csv('organization_dict1000.csv',index=False)
+pd.DataFrame(organization_dict.items()).to_csv('organization_dict.csv',index=False)
