@@ -15,10 +15,15 @@ from data_preprocess import *
 
 
 @socketio.on('calculateFinalScore')
-def calculate(organization):
+def calculate(data):
 	# get input from user
+	print (data)
+	organization = data['name']
+	influence = float(data["influence"])
+	strategy = float(data["strategy"])
+	execution = float(data["execution"])
 	organization = json.dumps(organization, ensure_ascii=False).encode('utf8')[1:-1]
-	topList = calculateFinalScore(organization).head(50)
+	topList = calculateFinalScore(organization, strategy, influence, execution).head(50)
 	returnList = {'name':list(topList.index), 'score':list(topList['score'])}
 	socketio.emit('returnScore', returnList)
 

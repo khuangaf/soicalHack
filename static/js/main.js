@@ -58,7 +58,11 @@ var socket = io();
     function calculateFinalScore(){
     	var e = document.getElementById("organizationList");
 		var org = e.options[e.selectedIndex].text;
-    	console.log(org)
-		socket.emit('calculateFinalScore', org)
+		var inf = document.getElementById("influence").value;
+		var str = document.getElementById("strategy").value;
+		var exe= document.getElementById("execution").value;
+		var dict={name: org, influence: inf, strategy:str, execution:exe}
+    	console.log(dict)
+		socket.emit('calculateFinalScore', dict)
 
 	};
