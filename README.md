@@ -1,5 +1,9 @@
 # 基金会中心网推荐系统
 
+## 需求
+#### 1. python 2.7
+#### 2. Google Chrome Browser（建议使用）
+
 ## 使用方法
 
 ## 安装package
@@ -8,7 +12,7 @@
 `pip install -r requirements.txt`
 
 ## 启动服务器
-#### 1. 启动flask伺服器
+#### 1. 启动flask服务器
 `python server.py`
 #### 2. 等待终端显示以下讯息
 `Data Preprocessing Ready!`
